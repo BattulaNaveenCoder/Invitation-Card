@@ -435,19 +435,27 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  background: url('./purpleimg.png') no-repeat center/contain;
+  background: url('./images/purpleimg.png') no-repeat center/contain;
+  opacity: 0.7;
+  animation: float 10s linear infinite;
+}
+.flowers {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('./images/flower.png') no-repeat center/contain;
   opacity: 0.7;
   animation: float 10s linear infinite;
 }
 
 .flower1 { top: 90%; left: 10%; animation-delay: 0s; }
-.flower2 { top: 95%; left: 15%; animation-delay: 3s; }
-.flower3 { top: 85%; left: 30%; animation-delay: 4s; }
-.flower4 { top: 100%; left: 45%; animation-delay: 6s; }
-.flower5 { top: 90%; left: 60%; animation-delay: 2s; }
-.flower6 { top: 95%; left: 75%; animation-delay: 6s; }
-.flower7 { top: 85%; left: 85%; animation-delay: 1s; }
-.flower8 { top: 100%; left: 90%; animation-delay: 2s; }
+.flower2 { top: 95%; left: 30%; animation-delay: 3s; }
+.flower3 { top: 85%; left: 60%; animation-delay: 4s; }
+.flower4 { top: 100%; left: 85%; animation-delay: 6s; }
+.flower5 { top: 90%; left: 25%; animation-delay: 2s; }
+.flower6 { top: 95%; left: 55%; animation-delay: 6s; }
+.flower7 { top: 85%; left: 70%; animation-delay: 1s; }
+.flower8 { top: 100%; left: 100%; animation-delay: 2s; }
 
 @keyframes float {
   0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
@@ -494,7 +502,7 @@
                     <p class="wedding-date">10<sup>th</sup> May, 2025</p>
                 </div>
                 
-                <img src="./naveen.png" alt="Couple" class="couple-image">
+                <img src="./images/naveen.png" alt="Couple" class="couple-image">
                 
                 <p class="invitation-text">We joyfully invite you to share in our celebration of love and commitment.</p>
                 
@@ -570,10 +578,10 @@
                       <div class="flower flower2"></div>
                       <div class="flower flower3"></div>
                       <div class="flower flower4"></div>
-                      <div class="flower flower5"></div>
-                      <div class="flower flower6"></div>
-                      <div class="flower flower7"></div>
-                      <div class="flower flower8"></div>
+                      <div class="flowers flower5"></div>
+                      <div class="flowers flower6"></div>
+                      <div class="flowers flower7"></div>
+                      <div class="flowers flower8"></div>
                     </div>
                   </div>
             </div>
