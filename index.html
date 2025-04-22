@@ -495,18 +495,23 @@
             <div class="floral-border"></div>
             <div class="floral-top"></div>
             <div class="floral-bottom"></div>
-            
+           
             <div class="card-content">
                 <div class="banner">
                     <h1 class="couple-names">Naveen & Devika</h1>
                     <p class="wedding-date">10<sup>th</sup> May, 2025</p>
                 </div>
+                <audio id="bg-audio" autoplay loop muted>
+                    <source src="./images/intro.mp3" type="audio/mpeg">
+                    
+                  </audio>
+                
                 
                 <img src="./images/naveen.png" alt="Couple" class="couple-image">
                 
                 <p class="invitation-text">We joyfully invite you to share in our celebration of love and commitment.</p>
                 
-                <a href="#" class="open-invitation" id="openInvitationBtn">Open Invitation</a>
+                <a href="#" class="open-invitation" onclick="unmuteAudio()" id="openInvitationBtn">Open Invitation</a>
             </div>
         </div>
     </div>
@@ -559,14 +564,25 @@
                 <div class="reception-details">
                     <h2 class="detail-heading">Venue Location</h2>
                     <div class="venue-card-body">
-                      <p class="venue-card-text">
+                      <p class="venue-card-text ">
                         <a href="https://maps.app.goo.gl/LEyagD5YDuocXqe18" target="_blank" class="venue-map-link">
                           📍 View Location on Google Maps
                         </a>
+                       
+
+                   
                       </p>
+                      <div class="venue-card-body"></div>
+                      <a onclick="downloadICS()" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Naveen+Wedding&details=You're+invited+to+Naveen's+wedding!+Set+a+reminder+for+the+day+before.&location=123+Wedding+Hall+St,+City,+Country&dates=20250510T043000Z/20250510T073000Z" 
+                      target="_blank"
+                      style="display: inline-block; padding: 10px 20px; margin: 10px; background-color: #4285f4; color: white; border-radius: 5px; text-decoration: none;">
+                     📅 Add to Google Calendar
+                   </a>
+                   </div>
+
                     </div>
                   </div>
-                
+                 
                   <div class="rsvp-flower-section">
                     <h2 class="rsvp-title">Bless Us with Your Presence</h2>
 
@@ -616,7 +632,13 @@
             alert('Thank you for your interest! The RSVP form would appear here.');
             // Here you would typically show a form or redirect to an RSVP form page
         });
-        
+        const audio = document.getElementById("bg-audio");
+
+        function unmuteAudio() {
+      const audio = document.getElementById("bg-audio");
+      audio.muted = false;
+      audio.play();
+    }
         // Create floating flowers
         function createFloatingFlowers() {
             const container = document.getElementById('floatingFlowers');
@@ -641,6 +663,39 @@
                 container.appendChild(flower);
             }
         }
+
+        function downloadICS() {
+    const title = "Naveen Wedding";
+    const description = "You're invited to Naveen's wedding! Don't forget to set a reminder.";
+    const location = "CSI Church Naguluru, Patha Naguluru, Reddygudeam Mandal, NTR";
+    const startDate = "20250510T100000Z";
+    const endDate = "20250510T140000Z";
+
+    const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${title}
+DESCRIPTION:${description}
+LOCATION:${location}
+DTSTART:${startDate}
+DTEND:${endDate}
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Reminder - Naveen's Wedding is Tomorrow!
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([icsContent], { type: "text/calendar" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "naveen-wedding.ics";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
         
         // Initialize map (placeholder function)
         function initMap() {
