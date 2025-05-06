@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Naveen & Devika – Wedding Invitation | Join Us in Celebration</title>
+    <link rel="icon" href="/images/fav.png" type="image/png">
     <meta property="og:title" content="Naveen & Devika's Wedding Invitation" />
 <meta property="og:description" content="Join us as we celebrate the love of Naveen & Devika. View the invitation, event details, and RSVP online." />
 <meta property="og:type" content="website" />
@@ -227,10 +228,29 @@
         .back-btn:hover {
             transform: translateX(-5px);
         }
+
+        .back-btns {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-btns:hover {
+            transform: translateX(-5px);
+        }
         
         .details-title {
             font-family: 'Dancing Script', cursive;
             font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .details-title1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 25px;
             margin-bottom: 10px;
         }
         
@@ -509,7 +529,7 @@
             <div class="card-content">
                 <div class="banner">
                     <h1 class="couple-names">Naveen & Devika</h1>
-                    <p class="wedding-date">10<sup>th</sup> May, 2025</p>
+                    <p class="wedding-date">16<sup>th</sup> May, 2025</p>
                 </div>
                 <audio id="bg-audio" autoplay loop muted>
                     <source src="./images/intro.mp3" type="audio/mpeg">
@@ -517,7 +537,7 @@
                   </audio>
                 
                 
-                <img src="./images/naveen.png" alt="Couple" class="couple-image">
+                <img src="./images/naveennew.png" alt="Couple" class="couple-image">
                 
                 <p class="invitation-text">We joyfully invite you to share in our celebration of love and commitment.</p>
                 
@@ -531,8 +551,13 @@
         <div class="details-card">
             <div class="details-header">
                 <i class="fas fa-arrow-left back-btn" id="backBtn"></i>
+                <i class="fas fa-volume-up back-btns" id="volumeBtn"></i>
+                <i class="fas fa-volume-mute back-btns" id="muteBtn"></i>
                 <h1 class="details-title">Naveen & Devika</h1>
-                <p class="details-date">10<sup>th</sup> May, 2025</p>
+                <h2 class="details-title1">Wedding Invitation</h2>
+                <p class="details-date">16<sup>th</sup> May, 2025</p>
+
+                
             </div>
             
             <div class="details-content">
@@ -558,23 +583,39 @@
                         <p class="detail-text">10:00 AM - 12:30 PM</p>
                         <p class="detail-text"><small>Doors open at 8:00 AM</small></p>
                     </div>
-                    
+                    <div class="reception-details">
+                        <div class="detail-icon">
+                            <!-- <i class="fas fa-user-friends"></i> -->
+                            <p>🤵👰</p>
+                        </div>
+                        <h3 class="detail-heading">Solemnized By</h3>
+                                <h2  style="color: red;">Rev. Rana Pratap garu</h2>
+                               
+                    </div>
                     <div class="reception-details">
                         <div class="detail-icon">
                             <i class="fas fa-glass-cheers"></i>
+                           
                         </div>
                         <h3 class="detail-heading">Reception</h3>
                                 <p class="detail-text">At Our Home</p>
                                 <p class="detail-text">Patha Naguluru</p>
-                                <p class="detail-text">2:00 PM onward</p>
+                                <p class="detail-text">12:30 PM onward</p>
                                 <p class="detail-text"><small>Join us for food, fun, and celebration!</small></p>
                     </div>
                 </div>
                 
                 <div class="reception-details">
-                    <h2 class="detail-heading">Venue Location</h2>
+                    <div class="detail-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="detail-heading">Venue Location</h3>
                     <div class="venue-card-body">
                       <p class="venue-card-text ">
+                        <p class="detail-text">CSI CHURCH,Patha Naguluru</p>
+                       
+                        <p class="detail-text">Reddygudem Mandal</p>
+                        <p class="detail-text">NTR District</p>
                         <a href="https://maps.app.goo.gl/LEyagD5YDuocXqe18" target="_blank" class="venue-map-link">
                           📍 View Location on Google Maps
                         </a>
@@ -624,7 +665,7 @@
             e.preventDefault();
             document.getElementById('home-page').style.display = 'none';
             document.getElementById('details-page').style.display = 'block';
-            
+            document.getElementById('muteBtn').style.display = 'none';
             // Scroll to top when opening details page
             window.scrollTo(0, 0);
             
@@ -635,7 +676,23 @@
         document.getElementById('backBtn').addEventListener('click', function() {
             document.getElementById('details-page').style.display = 'none';
             document.getElementById('home-page').style.display = 'flex';
+            const audio = document.getElementById("bg-audio");
+            audio.muted=true;
         });
+        document.getElementById('volumeBtn').addEventListener('click', function() {
+            document.getElementById('volumeBtn').style.display = 'none';
+            document.getElementById('muteBtn').style.display = 'flex';
+            const audio = document.getElementById("bg-audio");
+            audio.muted=true;
+        });
+        document.getElementById('muteBtn').addEventListener('click', function() {
+            document.getElementById('muteBtn').style.display = 'none';
+            document.getElementById('volumeBtn').style.display = 'flex';
+            const audio = document.getElementById("bg-audio");
+            audio.muted=false;
+            audio.play();
+        });
+        
         
         // RSVP button click handler
         document.getElementById('rsvpBtn').addEventListener('click', function() {
@@ -678,8 +735,8 @@
     const title = "Naveen Wedding";
     const description = "You're invited to Naveen's wedding! Don't forget to set a reminder.";
     const location = "CSI Church Naguluru, Patha Naguluru, Reddygudeam Mandal, NTR";
-    const startDate = "20250510T100000Z";
-    const endDate = "20250510T140000Z";
+    const startDate = "20250516T043000Z";
+    const endDate = "20250516T070000Z";
 
     const icsContent = 
 `BEGIN:VCALENDAR
